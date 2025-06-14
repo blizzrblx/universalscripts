@@ -1,0 +1,101 @@
+local plr = game.Players.LocalPlayer
+local rs = game:GetService("RunService")
+
+local maingui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+maingui.Name = "BlizzXHubGui"
+maingui.ResetOnSpawn = false
+
+local framebg = Instance.new("Frame",maingui)
+framebg.Size = UDim2.fromScale(0.5,0.5)
+framebg.SizeConstraint = Enum.SizeConstraint.RelativeXY
+framebg.Position = UDim2.fromScale(0.5,0.5)
+framebg.AnchorPoint = Vector2.new(0.5,0.5)
+framebg.BackgroundColor3 = Color3.fromRGB(46, 46, 46)
+framebg.BackgroundTransparency = 0.4
+framebg.Name = "FrameBG"
+
+local bgstroke = Instance.new("UIStroke",framebg)
+bgstroke.Thickness = 6
+bgstroke.Color = Color3.fromRGB(26,26,26)
+
+local bgcorner = Instance.new("UICorner",framebg)
+bgcorner.CornerRadius = UDim.new(0.05,5)
+
+local bgdragger = Instance.new("UIDragDetector",framebg)
+
+local title = Instance.new("TextLabel",framebg)
+title.BackgroundTransparency = 0.5
+title.BackgroundColor3 = Color3.fromRGB(36,36,36)
+title.Size = UDim2.fromScale(0.15,0.15)
+title.AnchorPoint = Vector2.new(0.5,0.5)
+title.Position = UDim2.fromScale(0.1,0.1)
+title.Text = "BlizzXHub"
+title.TextScaled = true
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.TextStrokeTransparency = 0
+title.Name = "Title"
+
+local titlecorner = Instance.new("UICorner",title)
+titlecorner.CornerRadius = UDim.new(0.1,5)
+
+local titlestroke = Instance.new("UIStroke",title)
+titlestroke.Thickness = 3
+titlestroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local cmdsbg = Instance.new("Frame",framebg)
+cmdsbg.Size = UDim2.fromScale(0.75,0.9)
+cmdsbg.BackgroundTransparency = 0.8
+cmdsbg.Position = UDim2.fromScale(0.2,0.05)
+
+local cmdscorner = Instance.new("UICorner",cmdsbg)
+cmdscorner.CornerRadius = UDim.new(0.05,10)
+
+local cmdsstroke = Instance.new("UIStroke",cmdsbg)
+cmdsstroke.Thickness = 6
+cmdsstroke.Transparency = 0.5
+
+local speedhacksbutton = Instance.new("TextButton",cmdsbg)
+speedhacksbutton.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+speedhacksbutton.Size = UDim2.fromScale(0.25,0.1)
+speedhacksbutton.SizeConstraint = Enum.SizeConstraint.RelativeXX
+speedhacksbutton.Text = "Enable Super-Speed"
+speedhacksbutton.TextColor3 = Color3.new(1,1,1)
+speedhacksbutton.TextStrokeTransparency = 0
+speedhacksbutton.Position = UDim2.fromScale(0.01,0.025)
+
+local speedhackcorner = Instance.new("UICorner",speedhacksbutton)
+speedhackcorner.CornerRadius = UDim.new(0.1,5)
+
+local speedhackstroke = Instance.new("UIStroke",speedhacksbutton)
+speedhackstroke.Thickness = 3
+speedhackstroke.Transparency = 0.5
+speedhackstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local superjumpbutton = speedhacksbutton:Clone()
+superjumpbutton.Parent = cmdsbg
+superjumpbutton.Position = UDim2.fromScale(0.01,0.25)
+superjumpbutton.Text = "Enabled Super Jump"
+
+speedhacksbutton.MouseButton1Down:Connect(function()
+	local char = plr.Character
+	local human = char:WaitForChild("Humanoid")
+	rs.RenderStepped:Connect(function()
+		if human.WalkSpeed ~= 50 then
+			human.WalkSpeed = 50
+		end
+	end)
+end)
+
+superjumpbutton.MouseButton1Down:Connect(function()
+	local char = plr.Character
+	local human = char:WaitForChild("Humanoid")
+	rs.RenderStepped:Connect(function()
+		if human.JumpHeight ~= 30 then
+			human.JumpHeight = 30
+		end
+	end)
+end)
+
+while task.wait(3) do
+	require(game.ReplicatedStorage.Systems.Character.Game.Sprinting).StaminaLossDisabled = true
+end
