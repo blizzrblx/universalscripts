@@ -1,1 +1,1 @@
-Use this script across all games
+Use this OP inf health, ESP, INF stamina script in forsaken.(Requires good executor, I reccomend Swift)
