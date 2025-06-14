@@ -74,7 +74,24 @@ speedhackstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 local superjumpbutton = speedhacksbutton:Clone()
 superjumpbutton.Parent = cmdsbg
 superjumpbutton.Position = UDim2.fromScale(0.01,0.25)
-superjumpbutton.Text = "Enabled Super Jump"
+superjumpbutton.Text = "Enable Super Jump"
+
+local antistamina = speedhacksbutton:Clone()
+antistamina.Parent = cmdsbg
+antistamina.Position = UDim2.fromScale(0.01, 0.475)
+antistamina.Text = "Anti Stamina Drain(LOADS NEW SCRIPT)(You need a good executor for this)"
+antistamina.TextScaled = true
+
+local espbutton = speedhacksbutton:Clone()
+espbutton.Parent = cmdsbg
+espbutton.Position = UDim2.fromScale(0.275,0.025)
+espbutton.Text = "Toggle ESP"
+
+local infhealth = espbutton:Clone()
+infhealth.Parent = cmdsbg
+infhealth.Position = UDim2.fromScale(0.275,0.25)
+infhealth.Text = "Give INFINITE Health(Blatant)"
+infhealth.TextScaled = true
 
 speedhacksbutton.MouseButton1Down:Connect(function()
 	local char = plr.Character
@@ -96,6 +113,40 @@ superjumpbutton.MouseButton1Down:Connect(function()
 	end)
 end)
 
-while task.wait(3) do
-	require(game.ReplicatedStorage.Systems.Character.Game.Sprinting).StaminaLossDisabled = true
-end
+antistamina.MouseButton1Down:Connect(function()
+	local Sprinting = game:GetService("ReplicatedStorage").Systems.Character.Game.Sprinting
+	local m = require(Sprinting)
+	m.MaxStamina = 100000
+	m.StaminaGain = 10000
+
+	m.StaminaLoss = 0.1
+	m.SprintSpeed = 32
+end)
+
+espbutton.MouseButton1Down:Connect(function()
+	local function esp()
+		for i, characters in pairs(workspace.Players:GetDescendants()) do
+			print(characters)
+			if characters:IsA("Model") then
+				if characters and game.Players:GetPlayerFromCharacter(characters) then
+					if characters:FindFirstChild("Highlight") then
+						characters:FindFirstChild("Highlight"):Destroy()
+					else
+						local highlight = Instance.new("Highlight")
+						highlight.Parent = characters
+						print(characters)
+					end
+				end
+			end
+		end
+	end
+	esp()
+end)
+
+infhealth.MouseButton1Down:Connect(function()
+	rs.RenderStepped:Connect(function()
+		local char = plr.Character
+		local hum = char:WaitForChild("Humanoid")
+		hum.Health = 100
+	end)
+end)
