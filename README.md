@@ -15,4 +15,4 @@ How to use easykey:
 
 <img width="1004" height="36" alt="image" src="https://github.com/user-attachments/assets/d5f976fd-685d-461b-a8d8-2a6dede3f34e" />
 
-7. And then, add this to your script to easily monetize and promote it!
+7. And then, add easykey to your script to monetize and promote it!
