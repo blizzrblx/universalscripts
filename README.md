@@ -20,7 +20,7 @@ How to use easykey:
 <img width="882" height="261" alt="image" src="https://github.com/user-attachments/assets/b1b140dd-a8f4-452a-b051-d5d61d644343" />
 
 5. Type in:
-    <b>local Module = loadstring(game:HttpGet("https://raw.githubusercontent.com/blizzrblx/universalscripts/refs/heads/main/easykey")()</b>
+    <b>local Module = loadstring(game:HttpGet("https://raw.githubusercontent.com/blizzrblx/universalscripts/refs/heads/main/easykey"))()</b>
 <img width="1005" height="26" alt="image" src="https://github.com/user-attachments/assets/22550b19-fb1f-4621-bcd7-2a38136d6877" />
 
 6. Then type in: <b>Module.GetKey(Your work.ink link here, Your script to load(must be the URL)</b>
