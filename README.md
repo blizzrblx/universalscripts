@@ -1,6 +1,6 @@
 How to use easykey:
 
-1. Sign up or create a new Work.Ink account
+1. Sign in or create a new Work.Ink account
 
 <img width="522" height="876" alt="image" src="https://github.com/user-attachments/assets/251b2060-600a-4808-83da-112ee5202fb0" />
 
